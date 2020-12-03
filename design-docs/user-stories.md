@@ -10,10 +10,12 @@ Takes the form of "as [description of user] I want [functionality] so that [bene
 
 ## Users who have signed up (user)
 
+  * As a user I want to be able to login with a username/password so I can manage my service.
+  * As a user I want to be able to reset my password so I can recover my account if I forget my password.
   * As a user I want to have access to the service details(frequency of shipments, amount of stickers in shipment, etc) so I can remind myself why I joined CKSC.
   * As a user I want to know when a shipment is coming up so I can pick one of my stickers.
   * As a user I want to be able to see my payment status so I know when I can renew or cancel.
-  * As a user I want to know when shipments have gone out and what tracking information is available so I can track them to my door.
+  * As a user I want to know the status of shipment so I can know when to expect it.
   * As a user I want to receive an email(or some other notification) when the deadline to pick a sticker is coming up so I can pick them last minute if I forgot to do it earlier.
 
 ## Administrators

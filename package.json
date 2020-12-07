@@ -1,0 +1,20 @@
+{
+  "name": "coolkidsstickerclub",
+  "version": "1.0.0",
+  "description": "repository for the cool kids sticker club.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toastynerd/coolkidsstickerclub.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/toastynerd/coolkidsstickerclub/issues"
+  },
+  "homepage": "https://github.com/toastynerd/coolkidsstickerclub#readme"
+}

@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/toastynerd/coolkidsstickerclub/issues"
   },
-  "homepage": "https://github.com/toastynerd/coolkidsstickerclub#readme"
+  "homepage": "https://github.com/toastynerd/coolkidsstickerclub#readme",
+  "dependencies": {
+    "@prisma/cli": "^2.12.1",
+    "apollo-server": "^2.19.0"
+  }
 }

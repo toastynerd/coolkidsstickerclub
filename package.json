@@ -4,6 +4,7 @@
   "description": "repository for the cool kids sticker club.",
   "main": "index.js",
   "scripts": {
+    "start-server": "node api",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +20,7 @@
   "homepage": "https://github.com/toastynerd/coolkidsstickerclub#readme",
   "dependencies": {
     "@prisma/cli": "^2.12.1",
-    "apollo-server": "^2.19.0"
+    "apollo-server": "^2.19.0",
+    "jest": "^26.6.3"
   }
 }

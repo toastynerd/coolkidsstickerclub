@@ -1,0 +1,27 @@
+version: "3"
+services:
+  nodejs:
+    image: node:latest
+    user: node
+    working_dir: /home/node/app
+    container_name: nodejs_blog
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - 4000:4000
+    command: "npm run start-server"
+    links:
+      - postgres
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres
+    container_name: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    env_file:
+      - "prisma/.env"

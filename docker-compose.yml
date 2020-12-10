@@ -4,7 +4,7 @@ services:
     image: node:latest
     user: node
     working_dir: /home/node/app
-    container_name: nodejs_blog
+    container_name: nodejs_cksc 
     volumes:
       - ./:/home/node/app
     ports:

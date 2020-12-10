@@ -32,5 +32,5 @@ model UserShipment {
   shipment Shipment? @relation(fields: [shipmentId], references: [id])
   shipmentId Int?
   choices String[]
-  dateShipped: DateTime
+  dateShipped DateTime
 }

@@ -5,6 +5,18 @@ module.exports = gql`
     info: String!
   }
 
+  type Mutation {
+    signup(
+      email: String!
+      password: String! 
+    ): AuthPayload
+
+    login(
+      email: String!
+      password: String!
+    ): AuthPayload
+  }
+
   type User {
     id: ID!
     email: String!
@@ -12,6 +24,11 @@ module.exports = gql`
     subscribed: String
     subscriptionExpiration: String
     userShipments: [UserShipment]
+  }
+
+  type AuthPayload {
+    token: String
+    user: User
   }
 
   type Shipment {

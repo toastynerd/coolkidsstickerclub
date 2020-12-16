@@ -38,9 +38,23 @@ async function login(parent, args, context, info) {
   }
 };
 
+async function createshipment(parent, args, context, info) {
+  userId = getUserId(context);
+  user = await context.prisma.user.findUnique({ where: { id: userId } });
+
+  if (user.role != 'ADMIN') throw new Error('need admin access');
+
+  const shipDate = new Date(args.shipDate);
+  const shipment = await context.prisma.shipment.create({ data: { ...args, shipDate } });
+  console.log(shipment);
+
+  return shipment;
+};
+
 const Mutation = {
   signup,
   login,
+  createshipment,
 };
 
 module.exports = {

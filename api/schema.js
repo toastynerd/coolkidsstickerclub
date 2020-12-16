@@ -15,6 +15,12 @@ module.exports = gql`
       email: String!
       password: String!
     ): AuthPayload
+
+    createshipment(
+      shipDate: String!
+      optionOne: [String]
+      optionTwo: [String]
+    ): Shipment
   }
 
   type User {

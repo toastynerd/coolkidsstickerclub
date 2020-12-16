@@ -21,6 +21,7 @@ module.exports = gql`
     id: ID!
     email: String!
     password: String!
+    role: Role!
     subscribed: String
     subscriptionExpiration: String
     userShipments: [UserShipment]
@@ -29,6 +30,11 @@ module.exports = gql`
   type AuthPayload {
     token: String
     user: User
+  }
+
+  enum Role {
+    ADMIN
+    COOLKID
   }
 
   type Shipment {

@@ -14,8 +14,9 @@ model User {
   id Int @id @default(autoincrement())
   email String
   password String
-  subscribed DateTime
-  subscriptionExpiration DateTime
+  role String
+  subscribed DateTime?
+  subscriptionExpiration DateTime?
 }
 
 model Shipment {

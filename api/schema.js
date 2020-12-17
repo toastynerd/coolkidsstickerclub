@@ -32,6 +32,12 @@ module.exports = gql`
       shipmentId: Int!
       choices: [String]!
     ): UserShipment
+
+    adminChooseStickers(
+      shipmentId: Int!
+      userId: Int!
+      choices: [String]!
+    ): UserShipment
   }
 
   type User {

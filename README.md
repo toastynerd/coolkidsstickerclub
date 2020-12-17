@@ -1,2 +1,1 @@
-# Cool Kids Sticker Club
-repository for the cool kids sticker club.
+![Cool Kids Sticker Club!](https://coolkidsstickerclub.com/CKSC.jpg)

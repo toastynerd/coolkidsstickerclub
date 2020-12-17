@@ -63,6 +63,15 @@ async function createUserShipment(parent, args, context, info) {
   const userToAdd = await context.prisma.user.findUnique({ where: { id: args.userId } });
   if (!userToAdd) throw new Error('no such user');
 
+  const userShipments = await context.prisma.findMany({
+    where: {
+      userId: userToAdd.id,
+      shipmentId: shipment.Id
+    }
+  });
+
+  if (userShipments.length) throw new Error('user already added to that shipment');
+
   const userShipment = await context.prisma.userShipment.create({
     data: {
       user: {
@@ -75,8 +84,31 @@ async function createUserShipment(parent, args, context, info) {
     }
   });
 
-  console.log(args);
-  console.log(userShipment);
+  return userShipment;
+};
+
+async function chooseStickers(parent, args, context, info) {
+  const userId = getUserId(context);
+  const user = await context.prisma.user.findUnique({ where: { id: userId } });
+
+  if (!user) throw new Error('Not a valid user');
+
+  const userShipments = await context.prisma.userShipment.findMany({
+    where: {
+      userId,
+      shipmentId: args.shipmentId
+    },
+
+  });
+
+  const userShipment = await context.prisma.userShipment.update({
+    where: {
+      id: userShipments[0].id
+    },
+    data: {
+      choices: args.choices
+    }
+  });
 
   return userShipment;
 };
@@ -86,6 +118,7 @@ const Mutation = {
   login,
   createShipment,
   createUserShipment,
+  chooseStickers,
 };
 
 module.exports = {

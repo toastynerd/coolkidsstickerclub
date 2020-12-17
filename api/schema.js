@@ -27,6 +27,11 @@ module.exports = gql`
       shipmentId: Int!
       userId: Int!
     ): UserShipment
+
+    chooseStickers(
+      shipmentId: Int!
+      choices: [String]!
+    ): UserShipment
   }
 
   type User {

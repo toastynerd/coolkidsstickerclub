@@ -38,23 +38,54 @@ async function login(parent, args, context, info) {
   }
 };
 
-async function createshipment(parent, args, context, info) {
-  userId = getUserId(context);
-  user = await context.prisma.user.findUnique({ where: { id: userId } });
+async function createShipment(parent, args, context, info) {
+  const userId = getUserId(context);
+  const user = await context.prisma.user.findUnique({ where: { id: userId } });
 
   if (user.role != 'ADMIN') throw new Error('need admin access');
 
   const shipDate = new Date(args.shipDate);
   const shipment = await context.prisma.shipment.create({ data: { ...args, shipDate } });
-  console.log(shipment);
 
   return shipment;
+};
+
+async function createUserShipment(parent, args, context, info) {
+  const userId = getUserId(context);
+  const user = await context.prisma.user.findUnique({ where: { id: userId } });
+
+  if (user.role != 'ADMIN') throw new Error('need admin access');
+  console.log(args);
+
+  const shipment = await context.prisma.shipment.findUnique({ where: { id: args.shipmentId } });
+  if (!shipment) throw new Error('no such shipment');
+
+  const userToAdd = await context.prisma.user.findUnique({ where: { id: args.userId } });
+  if (!userToAdd) throw new Error('no such user');
+
+  const userShipment = await context.prisma.userShipment.create({
+    data: {
+      user: {
+        connect: { id: args.userId }
+      },
+      shipment: {
+        connect: { id: args.shipmentId }
+      },
+      choices: args.choices || []
+    }
+  });
+
+  console.log(args);
+  console.log(userShipment);
+
+  return userShipment;
 };
 
 const Mutation = {
   signup,
   login,
-  createshipment,
+  createShipment,
+  createUserShipment,
 };
 
 module.exports = {

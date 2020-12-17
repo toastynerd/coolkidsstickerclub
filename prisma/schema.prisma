@@ -17,6 +17,7 @@ model User {
   role String
   subscribed DateTime?
   subscriptionExpiration DateTime?
+  activeSubscription Boolean @default(false)
 }
 
 model Shipment {
@@ -33,5 +34,5 @@ model UserShipment {
   shipment Shipment? @relation(fields: [shipmentId], references: [id])
   shipmentId Int?
   choices String[]
-  dateShipped DateTime
+  dateShipped DateTime?
 }

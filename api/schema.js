@@ -2,7 +2,8 @@ const { gql } = require('apollo-server');
 
 module.exports = gql`
   type Query {
-    info: String!
+    info: String!,
+    subscribedUsers: [User]!,
   }
 
   type Mutation {
@@ -16,11 +17,16 @@ module.exports = gql`
       password: String!
     ): AuthPayload
 
-    createshipment(
+    createShipment(
       shipDate: String!
       optionOne: [String]
       optionTwo: [String]
     ): Shipment
+
+    createUserShipment(
+      shipmentId: Int!
+      userId: Int!
+    ): UserShipment
   }
 
   type User {
@@ -31,6 +37,7 @@ module.exports = gql`
     subscribed: String
     subscriptionExpiration: String
     userShipments: [UserShipment]
+    activeSubscription: Boolean
   }
 
   type AuthPayload {
@@ -54,7 +61,7 @@ module.exports = gql`
   type UserShipment {
     userId: Int
     shipmentId: Int
-    choices: [String]
+    choices: [String]!
     dateShipped: String
   }
 `

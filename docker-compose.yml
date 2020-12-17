@@ -14,6 +14,8 @@ services:
       - postgres
     depends_on:
       - postgres
+    env_file:
+      - "./prisma/.env_docker"
 
   postgres:
     image: postgres
@@ -24,4 +26,4 @@ services:
     volumes:
       - ./data:/var/lib/postgresql/data
     env_file:
-      - "./prisma/.env"
+      - "./prisma/.env_docker"
